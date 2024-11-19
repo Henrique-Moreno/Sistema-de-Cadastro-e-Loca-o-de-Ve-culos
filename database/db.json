@@ -1,0 +1,39 @@
+{
+  "clientes": [
+    {
+      "id": "42ce",
+      "nome": "Pedro",
+      "email": "pedro@gmail.com"
+    },
+    {
+      "id": "e1b1",
+      "nome": "Ana",
+      "email": "ana@gmail.com"
+    }
+  ],
+  "carros": [
+    {
+      "id": "7dbd",
+      "nome": "Uno",
+      "marca": "Fiat",
+      "placa": "444444-8",
+      "valorLocacao": 240
+    },
+    {
+      "id": "c169",
+      "nome": "Golf",
+      "marca": "Volkswagen",
+      "placa": "777777-22",
+      "valorLocacao": 700
+    }
+  ],
+  "locacoes": [
+    {
+      "id": "1337",
+      "clienteId": "42ce",
+      "carroId": "7dbd",
+      "diasLocados": 2,
+      "valorTotal": 480
+    }
+  ]
+}

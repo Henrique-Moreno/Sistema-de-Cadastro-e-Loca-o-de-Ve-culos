@@ -1,0 +1,69 @@
+<h2 class="titulo">Cadastro de Locações</h2>
+
+<div class="form-container" *ngIf="!locacaoEditando">
+  <label for="cliente">Cliente:</label>
+  <select [(ngModel)]="novaLocacao.clienteId" id="cliente">
+    <option value="" disabled selected>Selecione um cliente</option>
+    <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
+  </select>
+
+  <label for="carro">Carro:</label>
+  <select [(ngModel)]="novaLocacao.carroId" id="carro">
+    <option value="" disabled selected>Selecione um carro</option>
+    <option *ngFor="let carro of carros" [value]="carro.id">{{ carro.nome }} - {{ carro.placa }}</option>
+  </select>
+
+  <label>Dias de Locação:</label>
+  <input type="number" [(ngModel)]="novaLocacao.diasLocados" placeholder="Quantidade de dias" />
+
+  <h3 class="titilo-valor-locacao">Valor Total da Locação: {{ calcularValorTotal() | currency }}</h3>
+
+  <button (click)="adicionarLocacao()">Cadastrar Locação</button>
+</div>
+
+<div class="form-container" *ngIf="locacaoEditando">
+  <h3>Editando Locação</h3>
+
+  <label for="cliente">Cliente:</label>
+  <select [(ngModel)]="locacaoEditando.clienteId" id="cliente">
+    <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
+  </select>
+
+  <label for="carro">Carro:</label>
+  <select [(ngModel)]="locacaoEditando.carroId" id="carro">
+    <option *ngFor="let carro of carros" [value]="carro.id">{{ carro.nome }} - {{ carro.placa }}</option>
+  </select>
+
+  <label>Dias de Locação:</label>
+  <input type="number" [(ngModel)]="locacaoEditando.diasLocados" placeholder="Quantidade de dias" />
+
+  <button (click)="salvarEdicao()">Salvar</button>
+  <button (click)="cancelarEdicao()">Cancelar</button>
+</div>
+
+<div class="tabela-container">
+  <h3>Lista de Locações</h3>
+  <table class="tabela-locacoes">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Carro</th>
+        <th>Dias</th>
+        <th>Valor Total</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loc of locacoes">
+        <td>{{ getClienteNome(loc.clienteId) }}</td>
+        <td>{{ getCarroNome(loc.carroId) }}</td>
+        <td>{{ loc.diasLocados }}</td>
+        <td>{{ loc.valorTotal | currency }}</td>
+        <td>
+          <button class="edite-btn" (click)="editarLocacao(loc)">Editar</button>
+          <button class="remover-btn" (click)="removerLocacao(loc.id)">Remover</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

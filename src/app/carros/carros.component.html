@@ -1,0 +1,46 @@
+<h2 class="titulo">Cadastro de Carros</h2>
+
+<div class="form-container">
+  <label>
+    Nome:
+    <input type="text" [(ngModel)]="novoCarro.nome" placeholder="Digite o nome do carro" />
+  </label>
+  <label>
+    Marca:
+    <input type="text" [(ngModel)]="novoCarro.marca" placeholder="Digite a marca do carro" />
+  </label>
+  <label>
+    Placa:
+    <input type="text" [(ngModel)]="novoCarro.placa" placeholder="Digite a placa do carro" />
+  </label>
+  <label>
+    Valor da Locação:
+    <input type="number" [(ngModel)]="novoCarro.valorLocacao" placeholder="Digite o valor da locação" />
+  </label>
+  <button (click)="adicionarCarro()">Adicionar Carro</button>
+</div>
+
+<div class="tabela-container">
+  <table class="tabela-carros">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Marca</th>
+        <th>Placa</th>
+        <th>Valor da Locação</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let carro of carros">
+        <td>{{ carro.nome }}</td>
+        <td>{{ carro.marca }}</td>
+        <td>{{ carro.placa }}</td>
+        <td>{{ carro.valorLocacao | currency }}</td>
+        <td>
+          <button class="remover-btn" (click)="removerCarro(carro.id)">Remover</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

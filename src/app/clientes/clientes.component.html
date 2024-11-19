@@ -1,0 +1,34 @@
+<h2 class="titulo">Cadastro de Clientes</h2>
+
+<div class="form-container">
+  <label>
+    Nome:
+    <input type="text" [(ngModel)]="novoCliente.nome" placeholder="Digite o nome" />
+  </label>
+  <label>
+    Email:
+    <input type="email" [(ngModel)]="novoCliente.email" placeholder="Digite o email" />
+  </label>
+  <button (click)="adicionarCliente()">Adicionar Cliente</button>
+</div>
+
+<div class="tabela-container">
+  <table class="tabela-clientes">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>{{ cliente.nome }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>
+          <button class="remover-btn" (click)="removerCliente(cliente.id)">Remover</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
